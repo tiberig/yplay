@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "YPLAY on MediaBerry"
+echo "Buffering 10s of video time..."
+#echo "Request=$1"
+URL="$(youtube-dl -g $1)"
+#echo ""
+#echo "URL=$URL"
+omxplayer -w -o hdmi --threshold 10 $URL
+echo "Press Enter to leave"
+read a

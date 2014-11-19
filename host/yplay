@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$1" != "__DO_YPLAY__" ]; then
+	export __YPLAY__="$2"
+	xterm -e $0 __DO_YPLAY__ &
+	exit
+fi
+
+echo "Firefox Request=$__YPLAY__"
+ssh -t volumio@mediaberry "/home/volumio/bin/yplay $__YPLAY__"
+echo "Press Enter to leave"
+read a
