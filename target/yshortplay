@@ -1,0 +1,8 @@
+#!/bin/bash
+
+req=$(wget -O - $1 2>&1 | grep '^Location:' | sed -e 's/Location: //' -e 's/ .*//' | tail -n 1)
+echo "Request=$req"
+URL="$(youtube-dl -g $req)"
+echo ""
+echo "URL=$URL"
+omxplayer -w -o hdmi --threshold 10 $URL &
